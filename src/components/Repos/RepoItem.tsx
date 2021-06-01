@@ -25,6 +25,7 @@ export const RepoItem = ({item}: RepoItemProptype) => {
     description,
     stargazers_count,
     stargazers_url,
+    id,
   } = item || {
     open_issues: 0,
     forks: 0,
@@ -35,6 +36,7 @@ export const RepoItem = ({item}: RepoItemProptype) => {
 
   const pushAction = StackActions.push('Stargazers', {
     urlStargazer: stargazers_url,
+    repoId: id,
   });
 
   const handleToStargazers = () => {

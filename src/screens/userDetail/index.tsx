@@ -47,11 +47,11 @@ export const UserDetailScreen = () => {
       title: username ?? 'Loading process',
     });
 
-    username && dispatch(getUser(username));
-  }, [dispatch, navigation, username]);
+    !user[username] && username && dispatch(getUser(username));
+  }, [dispatch, navigation, username, user]);
 
   useEffect(() => {
-    if (repos_url) {
+    if (repos_url && !repos?.[username]) {
       dispatch(
         getRepos(
           repos_url + '?' + KEY_CONFIG_URL + `&page=${pageNum}`,
@@ -59,7 +59,7 @@ export const UserDetailScreen = () => {
         ),
       );
     }
-  }, [dispatch, pageNum, repos_url, username]);
+  }, [dispatch, pageNum, repos, repos_url, username]);
 
   return (
     <FlatList

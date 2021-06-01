@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useRoute} from '@react-navigation/native';
@@ -13,32 +13,19 @@ import {KEY_CONFIG_URL} from '../../config';
 export const StargazersScreen = () => {
   const route: any = useRoute();
 
-  const [dataStargazers, setStargazers] = useState([]);
-
   const dispatch = useDispatch();
+  const {urlStargazer, repoId} = route.params || {};
 
   const {stargazers, loading}: any = useSelector(
     (state: RootState) => state.stargazer,
   );
 
   useEffect(() => {
-    const URL = route.params?.urlStargazer;
-
-    URL && dispatch(getStargazers(URL + '?' + KEY_CONFIG_URL));
-  }, [dispatch, route]);
-
-  useEffect(() => {
-    if (stargazers) {
-      setStargazers(stargazers);
-    }
-  }, [stargazers]);
-
-  useEffect(
-    () => () => {
-      setStargazers([]);
-    },
-    [],
-  );
+    urlStargazer &&
+      repoId &&
+      !stargazers[repoId] &&
+      dispatch(getStargazers(urlStargazer + '?' + KEY_CONFIG_URL, repoId));
+  }, [dispatch, repoId, stargazers, urlStargazer]);
 
   return (
     <FlatList
@@ -52,7 +39,7 @@ export const StargazersScreen = () => {
           </React.Fragment>
         ) : null
       }
-      data={dataStargazers ?? []}
+      data={stargazers?.[repoId] || []}
       renderItem={({item}: {item: any; index: number}) => (
         <UserItem item={item} />
       )}

@@ -1,9 +1,11 @@
+import _ from 'lodash';
 import {AnyAction} from 'redux';
 
 import {
   STARGAZERS_ERROR,
   STARGAZERS_LOADING,
   STARGAZERS_SUCCESS,
+  STARGAZERS_RESET,
 } from '../../Actions/actionType';
 
 export interface StargazerStateType {
@@ -13,7 +15,7 @@ export interface StargazerStateType {
 }
 
 const initialState = {
-  stargazers: [],
+  stargazers: {},
   loading: false,
   error: null,
 };
@@ -26,18 +28,35 @@ export const stargazerReducer = (state = initialState, action: AnyAction) => {
         loading: action.payload,
       };
     case STARGAZERS_SUCCESS:
+      const currentStargazers =
+        (action.payload.login && state.stargazers?.[action.payload.login]) ||
+        [];
+      const newStargazers = _.uniqBy(
+        [...currentStargazers, ...action.payload.data],
+        (item: any) => item.id,
+      );
       return {
         ...state,
         loading: false,
-        stargazers: action.payload,
+        stargazers: {
+          ...state.stargazers,
+          [action.payload.repoId]: newStargazers,
+        },
         error: null,
       };
     case STARGAZERS_ERROR:
       return {
         ...state,
         loading: false,
-        stargazers: null,
+        stargazers: {},
         error: action.payload,
+      };
+    case STARGAZERS_RESET:
+      return {
+        ...state,
+        loading: false,
+        stargazers: {},
+        error: null,
       };
     default:
       return {...state};

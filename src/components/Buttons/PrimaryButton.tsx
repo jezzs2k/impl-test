@@ -11,14 +11,14 @@ import {
 
 import {heightPercentageToDP, responsiveFontWidth} from '../../utils';
 
-type PrimaryButtonPropType = {
+export interface PrimaryButtonPropType {
   titleBtn: string;
   titleStyle?: StyleProp<ViewStyle | TextStyle>;
   onPress: () => void;
   disabled?: boolean;
   btnStyle?: StyleProp<ViewStyle>;
   loading?: boolean;
-};
+}
 
 export const PrimaryButton = ({
   titleBtn,
@@ -52,9 +52,7 @@ export const PrimaryButton = ({
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     borderRadius: 50,
-    justifyContent: 'center',
     paddingHorizontal: 25,
     backgroundColor: '#000',
   },
