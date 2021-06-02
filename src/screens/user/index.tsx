@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {Subject} from 'rxjs';
+import {Subject, Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import axios from 'axios';
 
@@ -13,7 +13,13 @@ import {getUsers} from '../../stores/Actions';
 import {generateText, heightPercentageToDP} from '../../utils';
 import {getUsersURL} from '../../config';
 
-let searchMention$: any = new Subject();
+interface SearchGithubUserType extends Observable<any> {
+  next: (text: string) => void;
+  complete: () => void;
+  error: (error: any) => void;
+}
+
+let searchGithub$: SearchGithubUserType = new Subject();
 
 export const UserScreen = () => {
   const [dataUser, setDateUser] = useState([]);
@@ -26,7 +32,7 @@ export const UserScreen = () => {
   );
 
   const handleSearchUser = useCallback(() => {
-    searchMention$
+    searchGithub$
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
@@ -53,7 +59,7 @@ export const UserScreen = () => {
 
   const handleChangeText = (text: string) => {
     !isSearching && setIsSearch(true);
-    searchMention$.next(text);
+    searchGithub$.next(text);
   };
 
   useEffect(() => {
