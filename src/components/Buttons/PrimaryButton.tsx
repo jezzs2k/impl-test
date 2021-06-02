@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     paddingHorizontal: 25,
     backgroundColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   titleStyle: {
     color: 'white',

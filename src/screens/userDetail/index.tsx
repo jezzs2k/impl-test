@@ -38,8 +38,11 @@ export const UserDetailScreen = () => {
 
   const {repos_url, public_repos} = user[username] || {};
 
-  const handleLoadMore = () => {
-    setPageNum(num => num + 1);
+  const handleLoadMore = (page: number) => {
+    dispatch(
+      getRepos(repos_url + '?' + KEY_CONFIG_URL + `&page=${page}`, username),
+    );
+    setPageNum(page);
   };
 
   useEffect(() => {
@@ -53,13 +56,10 @@ export const UserDetailScreen = () => {
   useEffect(() => {
     if (repos_url && !repos?.[username]) {
       dispatch(
-        getRepos(
-          repos_url + '?' + KEY_CONFIG_URL + `&page=${pageNum}`,
-          username,
-        ),
+        getRepos(repos_url + '?' + KEY_CONFIG_URL + `&page=${1}`, username),
       );
     }
-  }, [dispatch, pageNum, repos, repos_url, username]);
+  }, [dispatch, repos, repos_url, username]);
 
   return (
     <FlatList
@@ -87,7 +87,7 @@ export const UserDetailScreen = () => {
               btnStyle={styles.btnStyle}
               titleStyle={styles.titleStyle}
               disabled={loadinRepos}
-              onPress={handleLoadMore}
+              onPress={() => handleLoadMore(pageNum + 1)}
             />
           ) : null}
         </View>
