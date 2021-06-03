@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, View, ViewStyle, StyleProp} from 'react-native';
+import {Image, TouchableOpacity, ViewStyle, StyleProp} from 'react-native';
 
 import {widthPercentageToDP} from '../../utils';
 
@@ -11,6 +11,9 @@ type AvatarPropType = {
   size?: number;
   styleAvatar?: StyleProp<ViewStyle>;
   borderWidth?: number;
+  onPress?: () => void;
+  activeOpacity?: number;
+  borderColor?: string;
 };
 
 export const Avatar = ({
@@ -18,22 +21,33 @@ export const Avatar = ({
   size,
   styleAvatar,
   borderWidth,
+  onPress,
+  activeOpacity,
+  borderColor,
 }: AvatarPropType) => (
-  <View style={[styleAvatar || {}]}>
+  <TouchableOpacity
+    style={[styleAvatar]}
+    onPress={onPress}
+    activeOpacity={activeOpacity}>
     <Image
-      source={
-        uri
-          ? {uri}
-          : {
-              uri: LINK_IMAGE_DEFAULT,
-            }
-      }
+      source={{uri}}
       style={{
-        width: size || widthPercentageToDP(20),
-        height: size || widthPercentageToDP(20),
-        borderRadius: (size || widthPercentageToDP(20)) / 2,
-        borderWidth: borderWidth || 0,
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+        borderWidth: borderWidth,
+        borderColor: borderColor,
       }}
     />
-  </View>
+  </TouchableOpacity>
 );
+
+Avatar.defaultProps = {
+  uri: LINK_IMAGE_DEFAULT,
+  size: widthPercentageToDP(20),
+  styleAvatar: {},
+  borderWidth: 0,
+  onPress: () => {},
+  activeOpacity: 1,
+  borderColor: '#fff',
+};

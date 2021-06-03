@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, TextInput, Text, StyleSheet} from 'react-native';
+
 import {
   heightPercentageToDP,
   responsiveFontSetting,
@@ -24,11 +25,15 @@ export const SearchComp = ({
       </View>
       <TextInput
         style={styles.textInputStyle}
-        placeholder={placeholder ?? 'Search user ...'}
+        placeholder={placeholder}
         onChangeText={onchangeText}
       />
     </View>
   );
+};
+
+SearchComp.defaultProps = {
+  placeholder: 'Search user ...',
 };
 
 const styles = StyleSheet.create({
@@ -36,6 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: widthPercentageToDP(5),
     paddingVertical: heightPercentageToDP(1),
+    width: '100%',
   },
   containerItem: {
     marginBottom: heightPercentageToDP(1),

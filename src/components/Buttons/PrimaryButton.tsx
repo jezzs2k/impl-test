@@ -8,6 +8,7 @@ import {
   ViewStyle,
   TextStyle,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import {heightPercentageToDP, responsiveFontWidth} from '../../utils';
 
@@ -48,6 +49,15 @@ export const PrimaryButton = ({
       )}
     </TouchableOpacity>
   );
+};
+
+PrimaryButton.propTypes = {
+  titleBtn: PropTypes.string.isRequired,
+  titleStyle: PropTypes.objectOf(PropTypes.any),
+  onPress: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  btnStyle: PropTypes.objectOf(PropTypes.any),
+  loading: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({

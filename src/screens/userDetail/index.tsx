@@ -64,7 +64,7 @@ export const UserDetailScreen = () => {
   return (
     <FlatList
       data={repos?.[username] || []}
-      renderItem={({item}) => <RepoItem item={item} />}
+      renderItem={({item}) => <RepoItem item={item} navigation={navigation} />}
       ListHeaderComponent={
         <React.Fragment>
           <View style={styles.listHeader}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {StackActions, useNavigation} from '@react-navigation/native';
+import {NavigationProp, StackActions} from '@react-navigation/native';
 
 import {
   heightPercentageToDP,
@@ -11,13 +11,19 @@ import {
 import {Avatar} from '../Avatar';
 import {LinkURL} from '../LinkURL';
 
-type GithubItemPropType = {
-  item: any;
+type ItemType = {
+  avatar_url: string;
+  login: string;
+  type: string;
+  html_url: string;
 };
 
-export const UserItem = ({item}: GithubItemPropType) => {
-  const navigation = useNavigation();
+type GithubItemPropType = {
+  item: ItemType;
+  navigation: NavigationProp<any>;
+};
 
+export const UserItem = ({item, navigation}: GithubItemPropType) => {
   const {avatar_url, login, type, html_url} = item;
 
   const pushAction = StackActions.push('UserDetail', {
@@ -25,7 +31,7 @@ export const UserItem = ({item}: GithubItemPropType) => {
   });
 
   const handleToDetailUser = () => {
-    navigation.dispatch(pushAction);
+    navigation?.dispatch(pushAction);
   };
 
   return (
@@ -58,6 +64,7 @@ export const UserItem = ({item}: GithubItemPropType) => {
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',

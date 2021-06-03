@@ -12,14 +12,19 @@ type ShowTextItemProptype = {
 export const ShowTextItem = ({
   title,
   keyItem,
-  textStyle = {},
-  subTextStyle = {},
+  textStyle,
+  subTextStyle,
 }: ShowTextItemProptype) => {
   return title ? (
     <Text style={[styles.textStyle, styles.textNomal, textStyle]}>
       {keyItem}: <Text style={[styles.textBold, subTextStyle]}>{title}</Text>
     </Text>
   ) : null;
+};
+
+ShowTextItem.defaultProps = {
+  textStyle: {},
+  subTextStyle: {},
 };
 
 const styles = StyleSheet.create({

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {StackActions, useNavigation} from '@react-navigation/native';
+import {NavigationProp, StackActions} from '@react-navigation/native';
 
 import {
   heightPercentageToDP,
@@ -10,13 +10,23 @@ import {
 } from '../../utils';
 import {ShowTextItem} from '../Text/ShowTextItem';
 
-type RepoItemProptype = {
-  item: any;
+type ItemType = {
+  name?: string;
+  open_issues?: number;
+  forks?: number;
+  watchers?: number;
+  description?: string;
+  stargazers_count?: number;
+  stargazers_url?: string;
+  id?: number | string;
 };
 
-export const RepoItem = ({item}: RepoItemProptype) => {
-  const navigation = useNavigation();
+type RepoItemProptype = {
+  item: ItemType;
+  navigation: NavigationProp<any>;
+};
 
+export const RepoItem = ({item, navigation}: RepoItemProptype) => {
   const {
     name,
     open_issues,
@@ -26,13 +36,7 @@ export const RepoItem = ({item}: RepoItemProptype) => {
     stargazers_count,
     stargazers_url,
     id,
-  } = item || {
-    open_issues: 0,
-    forks: 0,
-    watchers: 0,
-    description: null,
-    stargazers_count: 0,
-  };
+  } = item;
 
   const pushAction = StackActions.push('Stargazers', {
     urlStargazer: stargazers_url,
@@ -60,19 +64,19 @@ export const RepoItem = ({item}: RepoItemProptype) => {
         />
         <ShowTextItem
           keyItem="Forks"
-          title={forks}
+          title={String(forks)}
           textStyle={styles.textNomal}
           subTextStyle={styles.subTextStyle}
         />
         <ShowTextItem
           keyItem="Watchers"
-          title={watchers}
+          title={String(watchers)}
           textStyle={styles.textNomal}
           subTextStyle={styles.subTextStyle}
         />
         <ShowTextItem
           keyItem="Open Issues"
-          title={open_issues}
+          title={String(open_issues)}
           textStyle={styles.textNomal}
           subTextStyle={styles.subTextStyle}
         />
@@ -92,6 +96,17 @@ export const RepoItem = ({item}: RepoItemProptype) => {
       </TouchableOpacity>
     </View>
   );
+};
+
+RepoItem.defaultProps = {
+  item: {
+    open_issues: 0,
+    forks: 0,
+    watchers: 0,
+    description: null,
+    stargazers_count: 0,
+  },
+  navigation: null,
 };
 
 const styles = StyleSheet.create({

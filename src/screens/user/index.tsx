@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {Subject, Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
@@ -10,7 +10,11 @@ import {SearchComp} from '../../components/SearchComp';
 import {BOSLoader} from '../../components/SpinnerLoader';
 import {RootState} from '../../stores';
 import {getUsers} from '../../stores/Actions';
-import {generateText, heightPercentageToDP} from '../../utils';
+import {
+  generateText,
+  heightPercentageToDP,
+  responsiveFontWidth,
+} from '../../utils';
 import {getUsersURL} from '../../config';
 
 interface SearchGithubUserType extends Observable<any> {
@@ -21,9 +25,10 @@ interface SearchGithubUserType extends Observable<any> {
 
 let searchGithub$: SearchGithubUserType = new Subject();
 
-export const UserScreen = () => {
+export const UserScreen = ({navigation}) => {
   const [dataUser, setDateUser] = useState([]);
   const [isSearching, setIsSearch] = useState(false);
+  const [hasError, setError] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -47,12 +52,14 @@ export const UserScreen = () => {
         next: (data: any) => {
           data?.items && setDateUser(data?.items);
           isSearching && setIsSearch(false);
+          setError(null);
         },
         error: (error: any) => {
           isSearching && setIsSearch(false);
+          setError(error);
         },
         complete: () => {
-          console.log('Completed');
+          setError(null);
         },
       });
   }, [isSearching]);
@@ -80,7 +87,17 @@ export const UserScreen = () => {
     <FlatList
       style={styles.container}
       ListHeaderComponent={
-        <SearchComp textTitle={'Search user'} onchangeText={handleChangeText} />
+        <React.Fragment>
+          <SearchComp
+            textTitle={'Search user'}
+            onchangeText={handleChangeText}
+          />
+          <View style={styles.errorContainer}>
+            {hasError && !loading && !isSearching ? (
+              <Text style={styles.textError}>An error occurred</Text>
+            ) : null}
+          </View>
+        </React.Fragment>
       }
       ListFooterComponent={
         loading || isSearching ? (
@@ -93,7 +110,7 @@ export const UserScreen = () => {
       }
       data={!isSearching ? dataUser : []}
       renderItem={({item}: {item: any; index: number}) => (
-        <UserItem item={item} />
+        <UserItem navigation={navigation} item={item} />
       )}
       keyExtractor={(item: any) => `${item.id}`}
       getItemLayout={(data: any, index: number) => ({
@@ -109,5 +126,16 @@ export const UserScreen = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eee',
+  },
+  errorContainer: {
+    backgroundColor: '#fff',
+    marginTop: heightPercentageToDP(1),
+    alignItems: 'center',
+  },
+  textError: {
+    color: 'red',
+    fontWeight: '700',
+    fontSize: responsiveFontWidth(3.5),
+    paddingVertical: heightPercentageToDP(1),
   },
 });

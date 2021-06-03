@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {useRoute} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {UserItem} from '../../components/user';
 import {BOSLoader} from '../../components/SpinnerLoader';
@@ -12,6 +12,7 @@ import {KEY_CONFIG_URL} from '../../config';
 
 export const StargazersScreen = () => {
   const route: any = useRoute();
+  const navigation = useNavigation();
 
   const dispatch = useDispatch();
   const {urlStargazer, repoId} = route.params || {};
@@ -41,7 +42,7 @@ export const StargazersScreen = () => {
       }
       data={stargazers?.[repoId] || []}
       renderItem={({item}: {item: any; index: number}) => (
-        <UserItem item={item} />
+        <UserItem navigation={navigation} item={item} />
       )}
       keyExtractor={(item: any) => `${item.id}`}
       getItemLayout={(data: any, index: number) => ({

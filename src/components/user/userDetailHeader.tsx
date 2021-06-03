@@ -11,8 +11,24 @@ import {LinkURL} from '../LinkURL';
 import {BOSLoader} from '../SpinnerLoader';
 import {ShowTextItem} from '../Text/ShowTextItem';
 
+type ItemType = {
+  avatar_url?: string;
+  login: string;
+  type?: string;
+  name?: string;
+  blog?: string;
+  bio?: string;
+  location?: string;
+  twitter_username?: string;
+  email?: string;
+  company?: string;
+  public_repos?: number;
+  followers?: number;
+  following?: number;
+};
+
 type UserDetailPropType = {
-  item: any;
+  item: ItemType;
 };
 
 export const UserDetail = ({item}: UserDetailPropType) => {
@@ -30,7 +46,7 @@ export const UserDetail = ({item}: UserDetailPropType) => {
     public_repos,
     followers,
     following,
-  } = item || {};
+  } = item;
 
   if (!item) {
     return <BOSLoader />;
@@ -45,7 +61,7 @@ export const UserDetail = ({item}: UserDetailPropType) => {
             {name ?? login}
           </Text>
           <ShowTextItem keyItem={'Type'} title={type} />
-          <ShowTextItem keyItem={'Repos'} title={public_repos} />
+          <ShowTextItem keyItem={'Repos'} title={String(public_repos)} />
           <ShowTextItem keyItem={'Company'} title={company} />
           {blog ? (
             <Text style={[styles.textStyle, styles.textNomal]}>
@@ -70,8 +86,13 @@ export const UserDetail = ({item}: UserDetailPropType) => {
   );
 };
 
+UserDetail.defaultProps = {
+  item: {},
+};
+
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     backgroundColor: '#fff',
     flexDirection: 'row',
     justifyContent: 'space-between',
