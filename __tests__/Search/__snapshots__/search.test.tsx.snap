@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchComp Snapshot test SearchComp component 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "paddingHorizontal": 37.5,
+      "paddingVertical": 13.5,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "marginBottom": 13.5,
+        "paddingTop": 13.5,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 16.75,
+          "fontWeight": "700",
+          "textTransform": "capitalize",
+        }
+      }
+    >
+      Search
+    </Text>
+  </View>
+  <TextInput
+    allowFontScaling={true}
+    onChangeText={[MockFunction]}
+    placeholder="Search user ..."
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "borderColor": "#bdc3c7",
+        "borderRadius": 8,
+        "borderWidth": 1,
+        "fontSize": 13.25,
+        "paddingHorizontal": 22.5,
+        "paddingVertical": 13.5,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

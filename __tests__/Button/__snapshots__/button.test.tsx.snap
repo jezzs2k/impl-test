@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buttons Snapshot test button component 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#000",
+      "borderRadius": 50,
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingHorizontal": 25,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "white",
+          "fontSize": 18,
+          "paddingVertical": 13.5,
+        },
+        Object {},
+        false,
+      ]
+    }
+  >
+    Button
+  </Text>
+</View>
+`;

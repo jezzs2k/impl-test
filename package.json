@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
+    "test:dev": "jest --watchAll",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "storybook": "start-storybook -p 7007",
     "build-storybook": "build-storybook"
@@ -37,8 +38,12 @@
     "rxjs": "^7.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
-    "@babel/runtime": "^7.12.5",
+    "@babel/core": "7.14.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.14.2",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/runtime": "7.14.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@storybook/addon-actions": "^5.3",
     "@storybook/addon-knobs": "^5.3",
@@ -47,25 +52,38 @@
     "@storybook/addon-ondevice-knobs": "^5.3.25",
     "@storybook/react-native": "^5.3.25",
     "@storybook/react-native-server": "^5.3.23",
+    "@testing-library/jest-native": "^4.0.1",
+    "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^26.0.23",
     "@types/lodash": "^4.14.170",
     "@types/react-native": "^0.64.5",
     "@types/react-native-vector-icons": "^6.4.6",
     "@types/react-test-renderer": "^16.9.2",
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
     "eslint": "^7.14.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.4",
     "metro-react-native-babel-preset": "^0.64.0",
     "react-dom": "17.0.1",
-    "react-test-renderer": "17.0.1",
+    "react-test-renderer": "^17.0.2",
     "typescript": "^3.8.3"
   },
   "resolutions": {
-    "@types/react": "^17"
+    "@types/react": "^17",
+    "react-native/@jest/create-cache-key-function": "^27.0.2"
   },
   "jest": {
     "preset": "react-native",
+    "verbose": true,
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@react-native|react-native)",
+      "node_modules/(?!(@react-native|react-native|react-native-vector-icons)/)",
+      "node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)",
+      "!node_modules/react-runtime"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",

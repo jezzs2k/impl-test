@@ -28,6 +28,7 @@ export const Avatar = ({
   <TouchableOpacity
     style={[styleAvatar]}
     onPress={onPress}
+    accessibilityRole={'button'}
     activeOpacity={activeOpacity}>
     <Image
       source={{uri}}

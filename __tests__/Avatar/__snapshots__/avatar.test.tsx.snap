@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar Snapshot test avatar component 1`] = `
+<View
+  accessibilityRole="button"
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg",
+      }
+    }
+    style={
+      Object {
+        "borderColor": "#fff",
+        "borderRadius": 75,
+        "borderWidth": 0,
+        "height": 150,
+        "width": 150,
+      }
+    }
+  />
+</View>
+`;

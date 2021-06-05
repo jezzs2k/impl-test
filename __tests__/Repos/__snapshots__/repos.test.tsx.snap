@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Repo Item Snapshot test repo item component 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "elevation": 5,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "marginTop": 13.5,
+      "paddingHorizontal": 37.5,
+      "paddingVertical": 6.5,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "maxWidth": 412.5,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 13.25,
+          },
+          Object {
+            "fontSize": 15.25,
+            "fontStyle": "italic",
+            "fontWeight": "200",
+          },
+          Object {
+            "fontSize": 13.25,
+            "fontStyle": "italic",
+            "fontWeight": "200",
+          },
+        ]
+      }
+    >
+      Forks
+      : 
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#2c3e50",
+              "fontSize": 14,
+              "fontWeight": "700",
+            },
+            Object {
+              "color": "#2c3e50",
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        0
+      </Text>
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 13.25,
+          },
+          Object {
+            "fontSize": 15.25,
+            "fontStyle": "italic",
+            "fontWeight": "200",
+          },
+          Object {
+            "fontSize": 13.25,
+            "fontStyle": "italic",
+            "fontWeight": "200",
+          },
+        ]
+      }
+    >
+      Watchers
+      : 
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#2c3e50",
+              "fontSize": 14,
+              "fontWeight": "700",
+            },
+            Object {
+              "color": "#2c3e50",
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        0
+      </Text>
+    </Text>
+    <Text
+      style={
+        Array [
+          Object {
+            "fontSize": 13.25,
+          },
+          Object {
+            "fontSize": 15.25,
+            "fontStyle": "italic",
+            "fontWeight": "200",
+          },
+          Object {
+            "fontSize": 13.25,
+            "fontStyle": "italic",
+            "fontWeight": "200",
+          },
+        ]
+      }
+    >
+      Open Issues
+      : 
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#2c3e50",
+              "fontSize": 14,
+              "fontWeight": "700",
+            },
+            Object {
+              "color": "#2c3e50",
+              "fontSize": 12,
+            },
+          ]
+        }
+      >
+        0
+      </Text>
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontSize": 13.25,
+          "fontStyle": "italic",
+          "fontWeight": "200",
+        }
+      }
+    >
+      Stargazers: 
+      <Text
+        style={
+          Object {
+            "fontSize": 12,
+            "fontWeight": "700",
+          }
+        }
+      >
+        0
+      </Text>
+    </Text>
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": "#aaa69d",
+            "fontSize": 13.25,
+          },
+          undefined,
+          Object {
+            "fontFamily": "anticon",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;

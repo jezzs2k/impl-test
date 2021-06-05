@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkUrl Snapshot test LinkUrl component 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontSize": 10.75,
+          "fontStyle": "normal",
+        },
+        Object {
+          "fontSize": 16.75,
+          "fontWeight": "700",
+        },
+        Object {
+          "color": "#1068bf",
+          "fontSize": 13.25,
+          "fontStyle": "italic",
+          "textDecorationLine": "underline",
+          "textTransform": "capitalize",
+        },
+        Object {},
+      ]
+    }
+  >
+    Brower
+  </Text>
+</View>
+`;

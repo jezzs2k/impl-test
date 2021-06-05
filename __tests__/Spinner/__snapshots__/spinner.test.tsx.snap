@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpinnerLoader Snapshot test SpinnerLoader component 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#fff",
+      "height": 285,
+    }
+  }
+>
+  <RNSVGSvgView
+    bbHeight="250px"
+    bbWidth="100%"
+    fill="black"
+    focusable={false}
+    height="250px"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        Object {
+          "flex": 0,
+          "height": 250,
+          "width": "100%",
+        },
+      ]
+    }
+    width="100%"
+  >
+    <RNSVGGroup
+      fill={4278190080}
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+    >
+      <RNSVGRect
+        height="16"
+        rx="8"
+        ry="8"
+        width="50%"
+        x="0"
+        y="0"
+      />
+      <RNSVGRect
+        height="128"
+        rx="9"
+        ry="9"
+        width="100%"
+        x="0"
+        y="30"
+      />
+      <RNSVGRect
+        height="8"
+        rx="4"
+        ry="4"
+        width="100%"
+        x="0"
+        y="172"
+      />
+      <RNSVGRect
+        height="8"
+        rx="4"
+        ry="4"
+        width="100%"
+        x="0"
+        y="188"
+      />
+      <RNSVGRect
+        height="8"
+        rx="4"
+        ry="4"
+        width="100%"
+        x="0"
+        y="204"
+      />
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
+`;

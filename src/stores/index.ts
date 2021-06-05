@@ -9,13 +9,7 @@ const rootReducer = combineReducers({
   stargazer: stargazerReducer,
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-  rootReducer,
-  {},
-  composeEnhancers(applyMiddleware(thunk)),
-);
+const store = createStore(rootReducer, {}, compose(applyMiddleware(thunk)));
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
